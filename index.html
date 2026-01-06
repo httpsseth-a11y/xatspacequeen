@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Espaço Girassol</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div id="xatspace-gallery-link">
+    <a href="https://httpsseth-a11y.github.io/xatspaceseth/" target="_blank">Xatspace Gallery</a>
+  </div>
+
+  <!-- Avatar -->
+  <div class="avatar-container">
+    <div class="avatar-frame">
+      <img src="https://i.ibb.co/cSmwyQFh/Gs-Xo-RZy.jpg" alt="Avatar principal">
+    </div>
+    <div class="avatar-name" style="font-family: 'Lobster', cursive; font-size: 2.1em; letter-spacing: 2px; color: #ff9ad5; text-shadow: 0 2px 8px #00000088;">𝙀𝙡𝙞𝙯𝙖</div>
+    <div class="avatar-id">ID: 133331</div>
+    <div class="arrow-toggle" id="phraseArrow" onclick="togglePhrase()">▼</div>
+  </div>
+
+  <!-- Girassóis animados removidos, mantendo apenas o fundo sunflower-field.jpg -->
+
+  <!-- Frase Permanente (Girassol) -->
+  <div class="home-phrase section" id="mainPhrase" style="display:flex; flex-direction:column; align-items:center;">
+    <div style="padding:12px 16px; border-radius:14px; background:rgba(15,10,8,0.82); border:1px solid rgba(255,154,213,0.45); box-shadow:0 4px 14px #00000028; max-width:320px; text-align:center;">
+      <a href="https://xat.com/vip" target="_blank" style="color:#ff9ad5; text-decoration:none; font-weight:600; letter-spacing:0.3px;">https://xat.com/vip</a>
+    </div>
+  </div>
+
+  <!-- Menu Horizontal -->
+  <div class="menu-container">
+    <div id="menu">
+      <button class="menu-btn" onclick="showContent('home')">
+        <span class="icon">⌂</span>
+        <span>HOME</span>
+      </button>
+      <button class="menu-btn" onclick="showContent('music')">
+        <span class="icon">♫</span>
+        <span>MUSIC</span>
+      </button>
+      <button class="menu-btn" onclick="showContent('gallery')">
+        <span class="icon">●</span>
+        <span>GALLERY</span>
+      </button>
+      <button class="menu-btn" onclick="showContent('about')">
+        <span class="icon">☼</span>
+        <span>ABOUT</span>
+      </button>
+    </div>
+</div>
+<div class="status-indicator" id="statusIndicator">
+  <span class="status-dot online"></span>
+  <span class="status-text">Online</span>
+</div>
+  </div>
+
+  <!-- Overlay para fechar sidebar -->
+  <div id="overlay"></div>
+
+  <!-- Área de Conteúdo -->
+  <div id="content-area" class="content-area section">
+    <!-- Seção de Música e galeria removidas da tela principal -->
+  </div>
+
+
+  <!-- Modal Windows -->
+  <div id="modal-home" class="modal-overlay" style="display:none;"></div>
+  <div id="modal-music" class="modal-overlay" style="display:none;"></div>
+  <div id="modal-gallery" class="modal-overlay" style="display:none;"></div>
+  <div id="modal-about" class="modal-overlay" style="display:none;"></div>
+
+  <!-- About Sidebar (lateral) -->
+  <div id="aboutSidebar">
+    <div class="about-sidebar-content">
+      <h2>
+        Sobre mí
+        <span class="about-sunflower-spin" style="margin-left:8px; display:inline-block; width:1.5em; height:1.5em; vertical-align:middle;">
+          <svg viewBox="0 0 64 64" width="1.5em" height="1.5em" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="32" cy="32" r="12" fill="#ff9ad5"/>
+            <g>
+              <ellipse cx="32" cy="10" rx="5" ry="10" fill="#ffb6e3"/>
+              <ellipse cx="32" cy="54" rx="5" ry="10" fill="#ffb6e3"/>
+              <ellipse cx="10" cy="32" rx="10" ry="5" fill="#ffb6e3"/>
+              <ellipse cx="54" cy="32" rx="10" ry="5" fill="#ffb6e3"/>
+              <ellipse cx="18" cy="18" rx="7" ry="3.5" fill="#ffb6e3"/>
+              <ellipse cx="46" cy="18" rx="7" ry="3.5" fill="#ffb6e3"/>
+              <ellipse cx="18" cy="46" rx="7" ry="3.5" fill="#ffb6e3"/>
+              <ellipse cx="46" cy="46" rx="7" ry="3.5" fill="#ffb6e3"/>
+            </g>
+            <circle cx="32" cy="32" r="7" fill="#ff6fb4"/>
+          </svg>
+        </span>
+      </h2>
+        <div style="margin:6px 0 14px 0; color:#ff9ad5; font-family: 'Pacifico', 'Segoe Script', cursive; font-size: 1.3rem; letter-spacing: 1.2px; text-shadow: 0 2px 10px #00000088, 0 0 10px #ff9ad566;">Resplandor que molesta a la oscuridad.</div>
+      <p>Hola soy Eliza, soy Mexicana vivo en Texas, amo mi familia mis raices y mi cultura, amo mi forma de ser solo amo ser yo misma sin intentar quedar bien con nadie solo conmigo misma, soy parte del vicio de xat.com, Bienvenidos a mi xat space!!</p>
+      <div class="about-id">ID: QU3N (133331)</div>
+    </div>
+  </div>
+
+
+
+  <script src="javascript.js"></script>
+  <script>
+  // Exibe o link só na tela principal
+  function updateGalleryLinkVisibility() {
+    var contentArea = document.getElementById('content-area');
+    var galleryLink = document.getElementById('xatspace-gallery-link');
+    if (!galleryLink) return;
+    // Se content-area existe e está visível, oculta o link
+    if (contentArea && contentArea.classList.contains('show')) {
+      galleryLink.style.opacity = '0';
+      galleryLink.style.pointerEvents = 'none';
+    } else {
+      galleryLink.style.opacity = '1';
+      galleryLink.style.pointerEvents = 'auto';
+    }
+  }
+  // Atualiza ao abrir menus/áreas
+  document.addEventListener('DOMContentLoaded', function() {
+    updateGalleryLinkVisibility();
+    // Observa mudanças na classe do content-area
+    var contentArea = document.getElementById('content-area');
+    if (contentArea) {
+      var observer = new MutationObserver(updateGalleryLinkVisibility);
+      observer.observe(contentArea, { attributes: true, attributeFilter: ['class'] });
+    }
+  });
+
+  // Indicador Online/Offline
+  function setStatus(isOnline) {
+    const indicator = document.getElementById('statusIndicator');
+    const dot = indicator.querySelector('.status-dot');
+    const text = indicator.querySelector('.status-text');
+    if (isOnline) {
+      dot.classList.add('online');
+      dot.classList.remove('offline');
+      text.textContent = 'Online';
+    } else {
+      dot.classList.remove('online');
+      dot.classList.add('offline');
+      text.textContent = 'Offline';
+    }
+  }
+  // Exemplo: alternar status a cada 3 segundos (remova ou adapte conforme necessário)
+  /*
+  let online = true;
+  setInterval(() => {
+    online = !online;
+    setStatus(online);
+  }, 3000);
+  */
+  </script>
+</body>
